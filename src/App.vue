@@ -2,6 +2,7 @@
     import TheHeader from '@/components/TheHeader.vue';
     import TheHero from '@/components/TheHero.vue';
     import TheFooter from '@/components/TheFooter.vue';
+    import TheNews from '@/components/TheNews.vue';
 </script>
 
 <template>
@@ -10,6 +11,10 @@
 
         <main>
             <TheHero>Новости</TheHero>
+
+            <div class="news">
+                <div class="container"><TheNews /></div>
+            </div>
         </main>
 
         <TheFooter />
@@ -25,5 +30,10 @@
 
     main {
         flex: 1 1 auto;
+    }
+
+    .news {
+        margin-top: 64px;
+        margin-bottom: 72px;
     }
 </style>
