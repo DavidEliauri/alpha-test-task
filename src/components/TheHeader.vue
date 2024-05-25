@@ -18,7 +18,9 @@
         padding: 40px 0;
         box-shadow: 0px 8px 16px 0px #00000014;
 
-        &__logo {
+        &__logo-img {
+            display: block;
+            width: 152px;
         }
     }
 </style>
