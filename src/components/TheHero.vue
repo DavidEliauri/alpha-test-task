@@ -22,6 +22,7 @@
 
         &__container {
             padding: 48px 0;
+            width: 100%;
         }
 
         &__title {
