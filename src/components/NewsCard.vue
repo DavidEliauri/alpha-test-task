@@ -1,21 +1,33 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import type { News } from '@/api/NewsApi/models/News';
+    import getFullMonth from '@/utlis/getFullMonth';
+
+    defineProps<{
+        news: News;
+    }>();
+</script>
 
 <template>
-    <!-- When no image provided .news-card_no-img -->
-    <div class="news-card">
+    <div
+        :class="{
+            'news-card_no-img': !news.image,
+        }"
+        class="news-card"
+    >
         <img
-            src="@/assets/news-card.png"
+            v-if="news.image"
+            :src="news.image"
             class="news-card__img"
         />
 
         <div class="news-card__content">
             <div class="news-card__date">
-                <div class="news-card__date-left">28</div>
+                <div class="news-card__date-left">{{ news.date.getDate() }}</div>
 
                 <div class="news-card__date-right">
-                    <div>February</div>
+                    <div>{{ getFullMonth(news.date.getMonth()) }}</div>
 
-                    <div>2022</div>
+                    <div>{{ news.date.getFullYear() }}</div>
                 </div>
             </div>
 
@@ -23,16 +35,15 @@
                 href="#"
                 class="news-card__title"
             >
-                Alpha объединяет усилия с Миром
+                {{ news.name }}
             </a>
 
             <div class="news-card__description">
-                Alpha объявляет о партнёрстве с Миром, ведущим мировым поставщиком экологических
-                услуг, чтобы помочь клиентам строить светлое будущее.
+                {{ news.previewText }}
             </div>
 
             <div class="news-card__tags">
-                <div class="news-card__tag">Новости</div>
+                <div class="news-card__tag">{{ news.type.value }}</div>
             </div>
         </div>
     </div>
@@ -42,8 +53,11 @@
     .news-card {
         border-radius: 16px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
         &__img {
+            flex: none;
             display: block;
             object-fit: cover;
             width: 100%;
@@ -51,6 +65,7 @@
         }
 
         &__content {
+            flex: 1 1 auto;
             border: 1px solid #0f62fe;
             border-top: none;
             padding: 32px;

@@ -1,10 +1,18 @@
 <script setup lang="ts">
     import BaseLoading from '@/components/Base/BaseLoading.vue';
+
+    defineProps<{
+        isPending?: boolean;
+    }>();
 </script>
 
 <template>
-    <!-- On load add .button_loading -->
-    <button class="button">
+    <button
+        :class="{
+            button_loading: isPending,
+        }"
+        class="button"
+    >
         <span class="button__text">
             <slot />
         </span>
