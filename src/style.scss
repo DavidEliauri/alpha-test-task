@@ -1,5 +1,12 @@
 @import '/node_modules/reset-css/reset.css';
 
+// Google fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 .container {
     padding: 0 16px;
     max-width: 1720px;
